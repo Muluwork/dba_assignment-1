@@ -1,0 +1,319 @@
+<html>
+<title>DBA Assignmet By Maggie</title>
+
+<body>
+
+    <h1>DBMS | Database Objects</h1>
+    <p>A database object is any defined object in a database that is used to
+        store or reference data. Anything which we make from create command is known as Database Object.
+        It can be used to hold and manipulate the data. Some of the examples of database objects are :
+        view, sequence, indexes, etc.</p>
+    <h3>Table </h3>
+    <p>A table is a collection of related data held in a structured format within a database.
+        It consists of columns, and rows.</p>
+    <h4>Implementation (syntax)</h4>
+    <span> CREATE TABLE table_name ([column_name] [data type], ...        ); </span>
+
+    <h4>Code explanation</h4>
+    <p>
+        -table name -specifies the table which is created under the given database <br>
+        -column name -specifies the column_name which is created under the table<br>
+        -data type -specifies the data type of the data stored under the column [column_name]
+    </p>
+
+    <h3>View </h3>
+    <p>A view provides an alternate way of looking at the data in one or more tables.
+        A view is a named specification of a result table and can be thought of as having columns and rows just like a
+        base table. For retrieval purposes, all views can be used just like base tables.
+        You can use views to select certain elements of a table and can present an existing table in a customized table
+        format without having to create a new table
+    </p>
+    <h4>Implementation (syntax)</h4>
+    <span> CREATE VIEW [view_name] AS SELECT [column_name],... FROM [table_name] WHERE [condition];
+    </span>
+
+    <h4>Code explanation</h4>
+    <p>
+        - The view is stored as a SELECT statement in the data dictionary.<br>
+        -it creates a view with the view_name and select some data[column names]
+        from given table[table_name] that fullfill some conditions [condition].
+
+    </p>
+    <h3>Sequance </h3>
+    <p>Sequence – This database object is used to create a sequence in database.
+        A sequence is a user created database object that can be shared by multiple users to generate unique integers.
+        A typical usage for sequences is to create a primary key value, which must be uni
+        The sequence is generated and incremented (or decremented) by an internal Oracle routine.
+    </p>
+    <h4>Implementation (syntax)</h4>
+    <span> CREATE SEQUENCE sequence_name
+        [INCREMENT BY n]
+        [START WITH n]
+        [{MAXVALUE n | NOMAXVALUE}]
+        [{MINVALUE n | NOMINVALUE}]
+        [{CYCLE | NOCYCLE}]
+        [{CACHE n | NOCACHE}];
+    </span>
+
+    <h4>Code explanation</h4>
+    <p>
+        -create a sequance [sequance-name] start with [START WITH n] to [{MAXVALUE n | NOMAXVALUE}] incremented by some
+        sequancial value [INCREMENT BY n].<br>
+        -CYCLE makes the value restart from the beginning and NO CYCLE discards values exceeding MAXVALUE
+
+    </p>
+
+    <h3>Index </h3>
+    <p>An index provides direct and fast access to rows in a table.
+        Its purpose is to reduce the necessity of disk I/O by using an indexed path to locate data quickly.
+        The index is used and maintained automatically by the Oracle server. Once an index is created, no direct
+        activity is required by the user.
+        Indexes are logically and physically independent of the table they index.
+        This means that they can be created or dropped at any time and have no effect on the base tables or other
+        indexes.
+    </p>
+    <h4>Implementation (syntax)</h4>
+    <span>CREATE INDEX [index_name] ON [table_name] (column[, column_name]...);
+    </span>
+
+    <h4>Code explanation</h4>
+    <p>
+        creates an index with [index_name]
+        on the table [table_name], under the columns specified [column_name]
+
+    </p>
+
+
+    <h3>Cursor </h3>
+    <p>A database cursor is an object used to pinpoint records in a database.
+        Just like a typing cursor is used to alert you where your text will
+        appear, a database cursor also shows you the specific record in a database that is being worked upon
+        <img src="ass.jpg" alt="it is cursor">
+    </p>
+    <h4>Implementation (syntax)</h4>
+    <span>CURSOR [cursor_name] IS [select_statement];
+    </span>
+
+    <h4>Code explanation</h4>
+    <p>
+        cursor_name – A suitable name for the cursor.<br>
+        select_statement – A select query which returns multiple rows
+
+    </p>
+    <h3>Database Link </h3>
+    <p>A database link is a network path stored locally, that provides the database with the ability to communicate
+        with a remote database.
+
+        A database link is composed of the name of the remote database, a communication path to the database, and a
+        user ID and password (if required).
+
+        Database links cannot be edited or altered. To make changes, drop and re-create.
+
+    </p>
+    <h4>Implementation (syntax)</h4>
+    <span>CREATE [database_link_type] DATABASE LINK [domain] USING [other_database_name]
+    </span>
+
+    <h4>Code explanation</h4>
+    <p>
+       it used to create a link between a local database and other database [other_database_name] which is found in under domain [domain].   <br>
+    -[database_link_type]-specifies the type of the link as private , public , global
+ </p>
+ <h3>Function </h3>
+ <p>A function is a relationship between a set of input data values and a set of result values.
+
+ </p>
+ <h4>Implementation (syntax)</h4>
+ <span>CREATE FUNCTION [function_name] (@[parameter_name] [data_type]) RETURNS [return_data_type] AS BEGIN [operation_statements] END RETURN @return [return_variable] END
+
+ </span>
+
+ <h4>Code explanation</h4>
+ <p>
+        A function is identified by its schema, a function name, the number of parameters, and the data types of its parameters.
+
+        Access to functions is controlled through the EXECUTE privilege. GRANT and REVOKE statements are used to specify who can or cannot execute a specific function or set of functions.
+        
+</p>
+<h3>Packages </h3>
+ <p>A package is a procedural schema object classified as a PL/SQL program unit that allows the access and manipulation of database information.<br><br>
+        A package is a group of related procedures and functions, together with the cursors and variables they use, stored together in the database for continued use as a unit. Similar to standalone procedures and functions, packaged procedures and functions can be called explicitly by applications or users.
+        DB applications explicitly call packaged procedures as necessary with privileges granted, a user can explicitly execute any of the procedures contained in it.<br><br>
+        Packages provide a method of encapsulating related procedures, functions, and associated cursors and variables together as a unit in the database. For example, a single package might contain two statements that contain several procedures and functions used to process banking transactions.
+        Packages allow the database administrator or application developer to organize similar routines as well as offering increased functionality and database performance.<br><br>
+        Packages provide advantages in the following areas: encapsulation of related procedures and variables, declaration of public and private procedures, variables, constraints and cursors, separation of the package specification and package body, and better performance.
+        
+ </p>
+ <h4>Implementation (syntax)</h4>
+ <span>CREATE PACKAGE package_name] IS [sub_programs | public element declaration] END [package_name]
+
+ </span>
+
+ <h4>Code explanation</h4>
+ <p>
+   in between the IS and END lies the logic of the package. subprograms that we want to execute or elements we would like to publicall declare can be put
+
+   
+        
+</p>
+
+<h3> Procedure </h3>
+ <p>A procedure is an application program that can be started through the SQL CALL statement. The procedure is specified by a procedure name, which may be followed by arguments enclosed within parenthesis.<br><br>
+
+        The argument or arguments of a procedure are individual scalar values, which can be of different types and can have different meanings. The arguments can be used to pass values into the procedure, receive return values from the procedure, or both.<br><br>
+        
+        A procedure, also called a stored procedure, is a database object created via the CREATE PROCEDURE statement that can encapsulate logic and SQL statements. Procedures are used as subroutine extensions to applications, and other database objects that can contain logic.
+        
+        
+ </p>
+ <h4>Implementation (syntax)</h4>
+ <span>CREATE PROCEDURE [procedure_name] (IN [parameter_name] [data_type] [as_locator] [data] LANGUAGE [language_type] [dml_operation]>
+
+
+ </span>
+
+ <h4>Code explanation</h4>
+ <p>
+        Creates a procedure with input values parameter_name and returns (as_locator) data (data) based on the operations (dml_operation) interprated in the language specified (language_type).
+
+ 
+        
+</p>
+
+<h3>Trigger </h3>
+ <p>A trigger defines a set of actions that are performed when a specified SQL operation (such as delete, insert, or update) occurs on a specified table. When the specified SQL operation occurs, the trigger is activated and starts the defined actions.<br><br>
+ Triggers can be used, along with referential constraints and check constraints, to enforce data integrity rules. Triggers can also be used to cause updates to other tables, automatically generate or transform values for inserted or updated rows, or invoke functions to perform tasks such as issuing alerts.
+ 
+ </p>
+ <h4>Implementation (syntax)</h4>
+ <span>{CREATE | REPLACE} TRIGGER [trigger_name] {BEFORE | AFTER | INSTEAD OF} [DML_operation] OF [column_name] ON [table_name] WHEN ([condition])
+        DECLARE [declaration statement] BEGIN [executable_statement] EXCEPTION [exception_handler_statements] END;
+
+
+ </span>
+
+ <h4>Code explanation</h4>
+ <p>
+        Creates (CREATE) or replaces (REPLACE) a trigger called trigger_name before (BEFORE), after (AFTER) or when (INSTEAD OF) an operation DML_operation, like an insert statement, is done on column_name column of the table table_name. DECLARE initializes statement variables that can be referenced during execution of the event handling. The event handler statements are put after BEGIN and go upto END. In between, exceptions can be handled by putting the handler statements after EXCEPTION
+
+        
+</p>
+
+<h3>Record </h3>
+ <p>Records are composed of fields, each of which contains one item of information. ... In relational database management systems, records are called tuples.  
+  Some programming languages allow you to define a special data structure called a record. Generally, a record is a combination of other data objects.
+ </p>
+ <h4>Implementation (syntax)</h4>
+ <span>{CREATE | REPLACE} TRIGGER [trigger_name] {BEFORE | AFTER | INSTEAD OF} [DML_operation] OF [column_name] ON [table_name] WHEN ([condition])
+        DECLARE [declaration statement] BEGIN [executable_statement] EXCEPTION [exception_handler_statements] END;
+
+
+ </span>
+
+ <h4>Code explanation</h4>
+ <p>
+        Inserts a data into a new row in the table, hence creating a record. The data values specified as <value> are stored in the corresponding sequential order match of the <column_name> attribute in the specified table, <table_name>
+
+
+        
+</p>
+<h3>Object </h3>
+ <p>A database object in a relational database is a data structure used to either store or reference data. 
+     The most common object that people interact with is the table.
+      Other objects are indexes, stored procedures, sequences, views and many more.
+ </p>
+ <h1>CONSTRAINT clause</h1>
+    <p>A CONSTRAINT clause is an optional part of a CREATE TABLE statement or ALTER TABLE statement. 
+        A constraint is a rule to which data must conform.
+         Constraint names are optional.</p>
+
+         <h3>Primary key </h3>
+         <p>Specifies the column that uniquely identifies a row in the table. The identified columns must be defined as NOT NULL.
+                Note: If you attempt to add a primary key using ALTER TABLE and any of the columns included in the primary key contain null values, an error will be generated and the primary key will not be added. See ALTER TABLE statement for more information.
+                
+        </p>
+         <h4>Implementation (syntax)</h4>
+         <span>CREATE TABLE [table_name] ([column_name] [data_type] PRIMARY KEY);
+
+        
+         </span>
+        
+         <h4>Code explanation</h4>
+         <p>
+                Both statements create a primary key constraint on the column column_name.
+
+
+                
+        </p>
+
+        <h3>Unique key </h3>
+         <p>Specifies that values in the column must be unique.
+        </p>
+         <h4>Implementation (syntax)</h4>
+         <span>CREATE TABLE [table_name] ([column_name] [data_type] UNIQUE, ...);
+
+        
+         </span>
+        
+         <h4>Code explanation</h4>
+         <p>
+                Creates a unique constraint on column_name of the table table_name.
+
+
+                
+        </p>
+        <h3>FOREIGN KEY </h3>
+         <p>Specifies that the values in the column must correspond to values in a referenced primary key or unique key column or that they are NULL.
+                •	Note: If the foreign key consists of multiple columns, and any column is NULL, the whole key is considered NULL. The insert is permitted no matter what is on the non-null columns.
+                
+        </p>
+         <h4>Implementation (syntax)</h4>
+         <span>CREATE TABLE [table_name] ([column_name], ... FOREIGN KEY ([column_name]) REFERENCES [foreign_table_name] ([foreign_column_name]);
+        
+         </span>
+        
+         <h4>Code explanation</h4>
+         <p>
+                Both create a foreign key constraint on the column column_name and references the key to the column foreign_column_name on the table foreign_table_name
+
+
+                
+        </p>
+        <h3>Not null</h3>
+         <p>Specifies that this column cannot hold NULL values (constraints of this type are not nameable).
+        </p>
+         <h4>Implementation (syntax)</h4>
+         <span>CREATE TABLE [table_name] ([column_name] [data_type] NOT NULL, ...);
+
+        
+         </span>
+        
+         <h4>Code explanation</h4>
+         <p>
+                Creates a not null constraint on column_name of the table table_name.
+
+
+                
+        </p> 
+        <h3>Check</h3>
+         <p>A check constraint can be used to specify a wide range of rules for the contents of a table.
+              A search condition (which is a boolean expression) is specified for a check constraint.
+               This search condition must be satisfied for all rows in the table. 
+               The search condition is applied to each row that is modified on an INSERT or UPDATE at the time of the row modification. 
+             The entire statement is aborted if any check constraint is violated.
+        </p>
+         <h4>Implementation (syntax)</h4>
+         <span>CREATE TABLE [table_name] ([column_name] [data type] [constraint], CHECK ([check_logic]);
+
+         </span>
+        
+         <h4>Code explanation</h4>
+         <p>
+               Creates a check constraint on the column name(s) specified in the check_logic, and ensures that requirement be met when inserting records into the column(s).
+
+
+                
+        </p> 
+        
+</body>
+<html>
